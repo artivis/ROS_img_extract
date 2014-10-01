@@ -1,0 +1,9 @@
+<launch>
+    <arg name="topic" default="/image_compressedTOTO" />
+    <arg name="file_path" default="$(env PWD)" />
+
+    <node pkg="ros_img_extractor" type="img_extractor" name="img_extractor" output="screen">
+        <param name="file_path" value="$(arg file_path)" />
+	<remap from="img_extractor/extract_topic" to="$(arg topic)" />
+    </node>
+</launch>

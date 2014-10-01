@@ -1,0 +1,54 @@
+<launch>
+    <arg name="topic1" default="/stereo/left/image" />
+    <arg name="topic2" default="/back_camera/image" />
+    <arg name="topic3" default="none" />
+    <arg name="topic4" default="none" />
+    <arg name="topic5" default="none" />
+    <arg name="topic6" default="none" />
+    <arg name="topic7" default="none" />
+    <arg name="topic8" default="none" />
+    <arg name="path1" default="$(env PWD)" />
+    <arg name="path2" default="none" />
+    <arg name="path3" default="none" />
+    <arg name="path4" default="none" />
+    <arg name="path5" default="none" />
+    <arg name="path6" default="none" />
+    <arg name="path7" default="none" />
+    <arg name="path8" default="none" />
+    <arg name="queuesize" default="10" />
+    <arg name="transport" default="raw" />
+    <arg name="frame1" default="/base_link" />
+    <arg name="frame2" default="/map" />
+    <arg name="dist_collect" default="0.5" />
+    <arg name="angle_collect" default="0.78" />"
+
+    <node pkg="ros_img_extractor" type="img_sync_extractor_pose" name="img_sync_extractor_pose" output="screen">
+        <param name="queue_size" value="$(arg queuesize)" />
+        <param name="transport" value="$(arg transport)" />
+        <param name="frame1" value="$(arg frame1)" />
+        <param name="frame2" value="$(arg frame2)" />
+        <param name="dist_to_collect" value="$(arg dist_collect)" />
+        <param name="angle_to_collect" value="$(arg angle_collect)" />
+        <rosparam param="topics" subst_value="True" >
+         - $(arg topic1)
+         - $(arg topic2)
+         - $(arg topic3)
+         - $(arg topic4)
+         - $(arg topic5)
+         - $(arg topic6)
+         - $(arg topic7)
+         - $(arg topic8)
+        </rosparam>
+        <rosparam param="file_paths" subst_value="True" >
+         - $(arg path1)
+         - $(arg path2)
+         - $(arg path3)
+         - $(arg path4)
+         - $(arg path5)
+         - $(arg path6)
+         - $(arg path7)
+         - $(arg path8)
+        </rosparam>
+    </node>
+</launch>
+

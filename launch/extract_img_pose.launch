@@ -1,0 +1,13 @@
+<launch>
+    <arg name="topic" default="/image_compressed" />
+    <arg name="file_path"  default="./" />
+    <arg name="frame1" default="/base_link" />
+    <arg name="frame2" default="/map" />
+
+    <node pkg="ros_img_extractor" type="img_extractor_pose" name="img_extractor_pose" output="screen">
+        <param name="topic" value="$(arg topic)" />
+        <param name="file_path" value="$(arg file_path)" />
+        <param name="frame1" value="$(arg frame1)" />
+        <param name="frame2" value="$(arg frame2)" />
+    </node>
+</launch>

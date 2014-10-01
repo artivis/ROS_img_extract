@@ -1,0 +1,46 @@
+<launch>
+    <arg name="topic1" default="/stereo/left/image" />
+    <arg name="topic2" default="/back_camera/image" />
+    <arg name="topic3" default="none" />
+    <arg name="topic4" default="none" />
+    <arg name="topic5" default="none" />
+    <arg name="topic6" default="none" />
+    <arg name="topic7" default="none" />
+    <arg name="topic8" default="none" />
+    <arg name="path1" default="$(env PWD)" />
+    <arg name="path2" default="$(arg path1)" />
+    <arg name="path3" default="none" />
+    <arg name="path4" default="none" />
+    <arg name="path5" default="none" />
+    <arg name="path6" default="none" />
+    <arg name="path7" default="none" />
+    <arg name="path8" default="none" />
+    <arg name="queuesize" default="10" />
+    <arg name="transport" default="raw" />
+
+     <node pkg="ros_img_extractor" type="img_sync_extractor" name="img_sync_extractor" output="screen">
+        <param name="queue_size" value="$(arg queuesize)" />
+        <param name="transport" value="$(arg transport)" />
+        <rosparam param="topics" subst_value="True" >
+         - $(arg topic1)
+         - $(arg topic2)
+         - $(arg topic3)
+         - $(arg topic4)
+         - $(arg topic5)
+         - $(arg topic6)
+         - $(arg topic7)
+         - $(arg topic8)
+        </rosparam>
+        <rosparam param="file_paths" subst_value="True" >
+         - $(arg path1)
+         - $(arg path2)
+         - $(arg path3)
+         - $(arg path4)
+         - $(arg path5)
+         - $(arg path6)
+         - $(arg path7)
+         - $(arg path8)
+        </rosparam>
+    </node>
+</launch>
+
